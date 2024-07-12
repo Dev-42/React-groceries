@@ -1,70 +1,120 @@
-# Getting Started with Create React App
+## React Groceries List
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Submission Instructions [Please note]
 
-## Available Scripts
+#### Maximum Marks - 15
 
-In the project directory, you can run:
+- The Submission should not contain spaces, for example /rct-101 folder/eval will not work.
+- Do not push node_modules and package_lock.json to github.
 
-### `npm start`
+```
+✅ able to submit the app - 1 mark ( minimum score )
+✅ heading should be visible when component loads - 1 mark
+✅ should make a get request to endpoint - 2 marks
+✅ Check all products are visible - 1 mark.
+✅ Check all name of the product are displayed - 1 mark
+✅ Check all price of the product are displayed - 1 mark
+✅ Check all image of the product are displayed - 1 mark
+✅ Add to Cart button should be visible by default - 1 mark.
+✅ onclicking Add to Cart button quantity should be incremented by 1 and CartButtons should be rendered(+ and - button) - 2 marks.
+✅ increment and decrement quantity buttons should work" - 2 marks.
+✅ if quantity goes below 1 Add to Cart button should be visible and decrement and increment buttons should not be visible - 2 marks
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Installation
 
-### `npm test`
+- Use node version(LTS) should be `v16.16.0`
+- Don't change/override package.json
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+npm install --engine-strict
 
-### `npm run build`
+// run locally
+npm run start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- the system on cp.masaischool.com may take between 1-20 minutes for responding,
+- so we request you to read the problem carefully and debug before itself
+- we also request you to not to just submit it last minute
+  try to keep one submission at a time
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Problem
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Description
 
-### `npm run eject`
+Create a react application which resembles the following image
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- You have to build a Products display page and each product can have an increment and decrement buttons to change the quantity.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Initially render `Get Groceries` button
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+  <img width="1719" alt="Screenshot 2022-11-25 at 12 05 27 PM" src="https://user-images.githubusercontent.com/103956933/222460282-bdbf7fa8-c3cc-46fc-92a3-3ef533114d80.png">
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- create a button with className `get-groceries`
+- onclicking `Get Groceries` button fetch data from below given API
 
-## Learn More
+  `https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-groceries`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- if button is clicked then data is visible and `button should not be visible`
+- map data into `GroceryItem` component inside `Grocerydetails` component
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  <img width="1719" alt="Screenshot 2022-11-25 at 12 05 27 PM" src="https://user-images.githubusercontent.com/103956933/222422801-ef504edf-f50c-4ced-b585-44a5406a1950.jpg">
 
-### Code Splitting
+## Folder Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Components
+  - CartButton.jsx
+  - Grocerydetails.jsx
+  - GroceryItem.jsx
+- App.js
 
-### Analyzing the Bundle Size
+- ### Grocerydetails
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+  - `h1` tag with `Groceries` as title
+  - a `Get-Groceries` button with `className="get-groceries"`
+  - button is only visible if product are not shown and vice versa
+  - on clicking button fetch data from api and map into below container
+  - a `div` tag with `data-cy="container"` ( data-cy is similar to id / className which we give to any of the tags)
+  - the above container should contain all the product details displayed as cards
 
-### Making a Progressive Web App
+- ### GroceryItem
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+  - This components should accept each product details (image, name, price) as props
+  - a `div` tag with `className = "grocery_card"`
+  - The above div should contain all the properties of given product (image, name, price,)
+  - show image in `img` tag
+  - show name in `h3` and price in `h5` tags
+  - Each card should have `Add to Cart` button with `data-cy="add_to_cart"` by default
 
-### Advanced Configuration
+- ### CartButton
+  - a `div` tag with `className = "change_quantity_container"`
+  - the above `div` should have
+    - increment button (with textcontent as `+`) with `data-cy = "inc_btn"`
+    - decrement button (with textcontent as `-`) with `data-cy = "dec_btn"`
+    - a `p` tag with `className="quantity"` to display the quantity
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Features to implement
 
-### Deployment
+- By default all the product cards should have `Add to Cart` button
+- use useState to maintain count of cart and initially it should be 0
+- onClicking `Add to Cart` button conditionally render the `CartButton` component with quantity as `1`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<img width="1719" alt="Screenshot 2022-11-25 at 12 05 27 PM" src="https://user-images.githubusercontent.com/103956933/222462554-fa9a3d62-e49c-40f4-9c08-23f44cfb804c.jpg">
 
-### `npm run build` fails to minify
+- You can increment or decrement the quantity by clicking `+`, `-` buttons
+- If the quantity goes below 1 bring the `Add to Cart` back and `CartButton` component should not be visible.
+- refer this for better understanding https://www.jiomart.com/all-topdeals
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### **Note**
+
+- Make sure you use only the given components and dont create new Components, files, folders of your own. Changing component name, file/folder structures might result in giving you zero marks
+- Do Not Remove `data-cy="xxxx"` from anywhere, these are used by testing tools to test your code, removal of this will lead to low score.
+- Also make sure to cross check all the spellings and Case of Texts.
+
+### General Guidelines
+
+- The system on cp.masaischool.com may take between 1-20 minutes for responding,
+- so we request you to read the problem carefully and debug before itself
+- we also request you to not to just submit it last minute
+- try to keep one submission at a time
